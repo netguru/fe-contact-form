@@ -1,13 +1,13 @@
 import React from "react";
 import "./Contact.css";
 
-function postDataForm(data, callback) {
-  return fetch("/api/form?API_KEY=zx3nkd55PascweD", {
+function postData(data, callback) {
+  var request = fetch("/api/form?API_KEY=zx3nkd55PascweD", {
     method: "POST",
     body: data
-  })
-    .response.json()
-    .then(callback);
+  }).then(response => {
+    response.json().then(callback);
+  });
 }
 
 export default class Contact extends React.Component {
@@ -16,7 +16,7 @@ export default class Contact extends React.Component {
   }
 
   handleSubmit = e => {
-    postDataForm(new FormData(e.target), () => {
+    postData(new FormData(e.target), e => {
       this.setState({ isSubmited: true });
     });
   };
