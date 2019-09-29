@@ -1,4 +1,5 @@
 import React from "react";
+import "./Contact.css";
 
 function postDataForm(data, callback) {
   return fetch("/api/form?API_KEY=zx3nkd55PascweD", {
@@ -21,21 +22,26 @@ export default class Contact extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
 
     return (
-      <div>
-        <img src="https://www.netguru.com/hubfs/images/landing_pages/og72x.png" />
-        <div>Contact</div>
-        <div>Use form below to contact us:</div>
+      <div className="container">
+        <img
+          className="logo"
+          src="https://www.netguru.com/hubfs/images/landing_pages/og72x.png"
+        />
+        <div className="header">Contact</div>
+        <div className="title">Use form below to contact us:</div>
         <form onSubmit={this.handleSubmit}>
-          <input name="name" placeholder="Name" />
+          <input name="name" placeholder="Your name" />
           <br />
-          <input name="surname" placeholder="Surname" />
+          <input name="email" placeholder="Your email" />
           <br />
-          <input name="title" placeholder="Title" />
+          <textarea name="message" placeholder="Your message" />
           <br />
-          <button type="submit">Send</button>
+          <button className="submit-button" type="submit">
+            Send
+          </button>
         </form>
         {this.state.isSubmited && (
           <div>Thanks! Your message has been submitted.</div>
